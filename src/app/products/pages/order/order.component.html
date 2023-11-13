@@ -1,0 +1,71 @@
+<div class="animate__animated animate__fadeIn">
+  <p-panel class="p-1" header="Custom Pipes">
+    <p>Pipes created by developers</p>
+  </p-panel>
+
+  <p-toolbar>
+    <div
+      class="flex flex-column align-items-center gap-2 sm:flex-row sm:justify-content-between sm:gap-0 w-full"
+    >
+      <div class="w-full sm:w-auto">
+        <p-button
+          [style]="{ width: '100%' }"
+          label="ToggleCase"
+          icon="pi pi-arrow-right-arrow-left"
+          (click)="toggleUpperCase()"
+        ></p-button>
+      </div>
+
+      <hr class="sm:hidden w-full">
+
+      <div class="flex flex-column sm:flex-row gap-2 w-full sm:w-auto">
+        <p-button
+          label="Name"
+          icon="pi pi-sort"
+          styleClass="p-button-secondary"
+          [style]="{ width: '100%' }"
+          [disabled]="sortBy === 'name'"
+          (click)="sortHeroes('name')"
+        ></p-button>
+        <p-button
+          label="Fly"
+          icon="pi pi-sort"
+          styleClass="p-button-info"
+          [style]="{ width: '100%' }"
+          [disabled]="sortBy === 'canFly'"
+          (click)="sortHeroes('canFly')"
+        ></p-button>
+        <p-button
+          label="Color"
+          icon="pi pi-sort"
+          styleClass="p-button-warning"
+          [style]="{ width: '100%' }"
+          [disabled]="sortBy === 'color'"
+          (click)="sortHeroes('color')"
+        ></p-button>
+      </div>
+    </div>
+  </p-toolbar>
+
+  <p-table
+    class="p-1"
+    [value]="heroes | sortBy : sortBy"
+    styleClass="p-datatable-gridlines"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Can Fly?</th>
+        <th>Color</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-hero>
+      <tr>
+        <td>{{ hero.name | toggleCase : isUpperCase }}</td>
+        <td>{{ hero.canFly | canFly | titlecase }}</td>
+        <td>{{ hero.color | getColor }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,113 @@
+<div class="animate__animated animate__fadeIn">
+  <p-panel class="p-1" header="Uncommon Pipes">
+    <p>Pipes included in Angular - Usually in the CommonModule</p>
+  </p-panel>
+
+  <div class="grid align-items-stretch">
+    <div class="col-12 md:col-6">
+      <p-fieldset
+        [style]="{ height: '100%' }"
+        legend="i18nSelectPipe"
+        [toggleable]="true"
+      >
+        <p>
+          {{ name }} was a great help,
+          {{ gender | i18nSelect : invitationMap }} to the event.
+        </p>
+
+        <button
+          pButton
+          pRipple
+          class="p-button-info"
+          icon="pi pi-arrow-right-arrow-left"
+          label="Change Person"
+          (click)="changeName()"
+        ></button>
+      </p-fieldset>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <p-fieldset
+        [style]="{ height: '100%' }"
+        legend="i18nPluralPipe"
+        [toggleable]="true"
+      >
+        <p>
+          There {{ clients.length | i18nPlural : clientsMap }} currently
+          {{ clients.length | i18nPlural : clientsQuantityMap }} waiting
+        </p>
+
+        <button
+          pButton
+          pRipple
+          class="p-button-danger"
+          icon="pi pi-user-minus"
+          label="Delete Client"
+          [disabled]="clients.length === 0"
+          (click)="deleteClient()"
+        ></button>
+      </p-fieldset>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <p-fieldset
+        [style]="{ height: '100%' }"
+        legend="SlicePipe"
+        [toggleable]="true"
+      >
+        <div class="overflow-auto">
+          <b>Original List</b>
+          <pre class="max-w-1rem">{{ names }}</pre>
+
+          <b>Sliced List (slice : 0 : 2)</b>
+          <pre class="max-w-1rem">{{ names | slice : 0 : 2 }}</pre>
+
+          <b>Sliced List (slice : 0 : -1)</b>
+          <pre class="max-w-1rem">{{ names | slice : 0 : -1 }}</pre>
+        </div>
+      </p-fieldset>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <p-fieldset
+        [style]="{ height: '100%' }"
+        legend="JSON Pipe"
+        [toggleable]="true"
+      >
+        <div class="overflow-auto">
+          <pre class="max-w-1rem">{{ person | json }}</pre>
+        </div>
+      </p-fieldset>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <p-fieldset
+        [style]="{ height: '100%' }"
+        legend="KeyValuePipe"
+        [toggleable]="true"
+      >
+        <ul>
+          <li *ngFor="let item of person | keyvalue">
+            <b>{{ item.key | titlecase }}:</b> {{ item.value }}
+          </li>
+        </ul>
+      </p-fieldset>
+    </div>
+
+    <div class="col-12 md:col-6">
+      <p-fieldset
+        [style]="{ height: '100%' }"
+        legend="Async Pipe"
+        [toggleable]="true"
+      >
+        <div class="overflow-auto">
+          <b *ngIf="!(myObservableTimer | async)">Resolving observable</b>
+          <pre class="max-w-1rem">{{ myObservableTimer | async }}</pre>
+
+          <b *ngIf="!(promiseValue | async)">Resolving promise</b>
+          <pre class="max-w-1rem">{{ promiseValue | async }}</pre>
+        </div>
+      </p-fieldset>
+    </div>
+  </div>
+</div>

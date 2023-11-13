@@ -1,0 +1,70 @@
+<div class="animate__animated animate__fadeIn">
+  <p-panel class="p-1" header="Basic Pipes">
+    <p>Pipes included in Angular - Usually in the CommonModule</p>
+  </p-panel>
+
+  <div class="grid">
+    <div class="col-12 md:col-4">
+      <p-card
+        header="UPPERCASE"
+        pTooltip="UpperCasePipe"
+        tooltipPosition="bottom"
+        >{{ nameLowerCase | uppercase }}</p-card
+      >
+    </div>
+
+    <div class="col-12 md:col-4">
+      <p-card
+        header="lowercase"
+        pTooltip="LowerCasePipe"
+        tooltipPosition="bottom"
+        >{{ nameUpperCase | lowercase }}</p-card
+      >
+    </div>
+
+    <div class="col-12 md:col-4">
+      <p-card
+        header="TitleCase"
+        pTooltip="TitleCasePipe"
+        tooltipPosition="bottom"
+        >{{ fullName | titlecase }}</p-card
+      >
+    </div>
+
+    <div class="col-12">
+      <p-card header="Date" pTooltip="DatePipe" tooltipPosition="top">
+        <div class="custom-list-container">
+          <div>
+            <ul class="custom-list">
+              <li>date</li>
+              <li>date | date</li>
+              <li>date | date:'short'</li>
+              <li>date | date:'long'</li>
+              <li>date | date:'MMMM'</li>
+              <li>date | date:'MMMM dd, yyyy'</li>
+              <hr />
+              <li>date | date:'long':'GMT-6'</li>
+              <li>date | date:'long':'GMT-4'</li>
+              <li>date | date:'long':'':'de-CH'</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <ul class="custom-list">
+              <li>{{ customDate }}</li>
+              <li>{{ customDate | date }}</li>
+              <li>{{ customDate | date : "short" }}</li>
+              <li>{{ customDate | date : "long" }}</li>
+              <li>{{ customDate | date : "MMMM" }}</li>
+              <li>{{ customDate | date : "MMMM dd, yyyy" }}</li>
+              <hr />
+              <li>{{ customDate | date : "long" : "GMT-6" }}</li>
+              <li>{{ customDate | date : "long" : "GMT-4" }}</li>
+              <li>{{ customDate | date : "long" : "" : "de-CH" }}</li>
+            </ul>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>

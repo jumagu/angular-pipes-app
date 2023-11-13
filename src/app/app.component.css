@@ -1,0 +1,10 @@
+.pages-container {
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.change-theme-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+}
